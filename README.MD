@@ -33,7 +33,7 @@ fun main(args: Array<String>) {
 
     // Get the state of a device
     val deviceState: GoveeDeviceState = device.getDeviceState()
-    print("Brightness; ${deviceState.brightness}");
+    print(deviceState.toString());
 }
 ```
 
