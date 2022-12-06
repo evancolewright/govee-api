@@ -7,7 +7,7 @@ import pro.evanwright.govee.exception.GoveeWrappedException
 import java.awt.Color
 import java.io.IOException
 
-class GoveeDevice(
+data class GoveeDevice(
     val name: String,
     val model: String,
     val macAddress: String,

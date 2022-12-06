@@ -5,4 +5,9 @@ import java.awt.Color
 /**
  * Represents the real-time state of a [GoveeDevice]
  */
-class GoveeDeviceState(val isOnline: Boolean, val powerState: String, val brightness: Int, val color: Color)
+data class GoveeDeviceState(
+    val isOnline: Boolean,
+    val powerState: String,
+    val brightness: Int,
+    val color: Color
+)
