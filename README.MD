@@ -28,12 +28,12 @@ fun main(args: Array<String>) {
     // Get the device and perform functions
     val device: GoveeDevice = GoveeAPI.getDeviceFromName("Desk lamp") ?: return
     device.turnOn()
-    device.setColor("#74B72E");
+    device.setColor("#74B72E")
     device.setBrightness(50)
 
     // Get the state of a device
     val deviceState: GoveeDeviceState = device.getDeviceState()
-    print(deviceState.toString());
+    print(deviceState.toString())
 }
 ```
 
