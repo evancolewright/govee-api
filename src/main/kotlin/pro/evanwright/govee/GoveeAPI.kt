@@ -19,6 +19,7 @@ object GoveeAPI  {
      * Retrieves a [GoveeDevice] by its MAC address
      * @param macAddress  The MAC address to search for
      */
+    @JvmStatic
     fun getDeviceFromMacAddress(macAddress: String): GoveeDevice? {
        return deviceCache.find { goveeDevice: GoveeDevice -> goveeDevice.macAddress == macAddress }
     }
@@ -26,6 +27,7 @@ object GoveeAPI  {
      * Retrieves a [GoveeDevice] by its user-defined name
      * @param name  The name to search for
      */
+    @JvmStatic
     fun getDeviceFromName(name: String): GoveeDevice? {
         return deviceCache.find { goveeDevice: GoveeDevice -> goveeDevice.name == name }
     }
@@ -41,6 +43,7 @@ object GoveeAPI  {
      * the internal device cache.
      * @throws  GoveeWrappedException  if an [IOException] occurs
      */
+    @JvmStatic
     fun initialize(key: String = "") {
         if (key.isNotEmpty())
              apiKey = key;
