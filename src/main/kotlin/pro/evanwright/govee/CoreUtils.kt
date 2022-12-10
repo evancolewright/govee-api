@@ -23,7 +23,7 @@ object CoreUtils {
     private const val BASE_URL = "https://developer-api.govee.com/v1";
 
     private fun getBaseRequest(suffix: String): Request.Builder {
-        return Request.Builder().header("Govee-API-Key", "d05200c6-a40b-428e-a75e-194bda311d0b").url(BASE_URL + suffix)
+        return Request.Builder().header("Govee-API-Key", GoveeAPI.apiKey).url(BASE_URL + suffix)
     }
 
     @Throws(IOException::class)
