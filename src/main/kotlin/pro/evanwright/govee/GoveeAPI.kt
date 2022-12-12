@@ -1,7 +1,6 @@
 package pro.evanwright.govee
 
 import pro.evanwright.govee.exception.GoveeAPIException
-import pro.evanwright.govee.exception.GoveeWrappedException
 import pro.evanwright.govee.model.GoveeDevice
 import java.io.IOException
 import kotlin.collections.HashSet
@@ -41,16 +40,12 @@ object GoveeAPI  {
     /**
      * Initializes the API.  You may also use this function to reinitialize
      * the internal device cache.
-     * @throws  GoveeWrappedException  if an [IOException] occurs
+     * @throws IOException  if the internal request fails
      */
     @JvmStatic
     fun initialize(key: String = "") {
         if (key.isNotEmpty())
              apiKey = key;
-        try {
-            initializeDeviceCache()
-        } catch(exception: IOException) {
-            throw GoveeWrappedException(exception)
-        }
+        initializeDeviceCache()
     }
 }

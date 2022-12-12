@@ -3,7 +3,6 @@ package pro.evanwright.govee.model
 import pro.evanwright.govee.CoreUtils
 import pro.evanwright.govee.exception.GoveeAPIException
 import pro.evanwright.govee.exception.GoveeInvalidParameterException
-import pro.evanwright.govee.exception.GoveeWrappedException
 import java.awt.Color
 import java.io.IOException
 
@@ -82,30 +81,14 @@ data class GoveeDevice(
 
     /**
      * Makes a request to retrieve the current state of the [GoveeDevice] and returns it.
-     *
-     * @return The real-time state of the device.
-     * @throws GoveeAPIException If the request fails
+     * @throws IOException If the request fails
      */
     fun getDeviceState(): GoveeDeviceState {
-        try {
-            CoreUtils.checkResponse(
-                CoreUtils.get(
-                    String.format(
-                        "/devices/state?device=%s&model=%s",
-                        macAddress.replace(":", "%3A"), model
-                    )
-                )
-            ).use { response -> return CoreUtils.convertJsonDeviceState(response.body!!.string()); }
-        } catch (exception: IOException) {
-            throw GoveeWrappedException(exception)
-        }
+        val response = CoreUtils.get(String.format("/devices/state?device=%s&model=%s", macAddress.replace(":", "%3A"), model));
+        CoreUtils.checkResponse(response).use { res -> return CoreUtils.convertJsonDeviceState(res.body!!.string()); }
     }
 
     private fun sendCommand(json: String) {
-        try {
-            CoreUtils.put("/devices/control", json).use { response -> CoreUtils.checkResponse(response) }
-        } catch (exception: IOException) {
-            throw GoveeWrappedException(exception)
-        }
+        CoreUtils.put("/devices/control", json).use { response -> CoreUtils.checkResponse(response) }
     }
 }
