@@ -37,8 +37,7 @@ val (online, powerState, brightness, color) = device.getDeviceState()
 
 ## ✏️ Notes
 - The API works by fetching all devices on your account when you call GoveeAPI#initialize.  If you add new devices, you will need to call it again.
-- Most API-related functions throw some sort of GoveeAPIException.  You can wrap it with a try/catch to handle it.
-- Unfortunately, The Govee Web API has a rather harsh rate limit.  Look out for a GoveeRateLimitException when your limit has been exceeded.
+- Unfortunately, the Govee Web API has a rather harsh rate limit.  Look out for a GoveeRateLimitException when your limit has been exceeded.
 
 ### 🗒️ License
 MIT
